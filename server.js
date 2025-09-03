@@ -11,6 +11,7 @@ import mentorRoutes from "./routes/mentors.js";
 import pyqRoutes from "./routes/pyqs.js";
 import blogRoutes from "./routes/blogs.js";
 import contactRoutes from "./routes/Contact.js";
+
 // Load env vars
 dotenv.config();
 
@@ -69,6 +70,7 @@ app.use("/api/mentors", mentorRoutes);
 app.use("/api/pyqs", pyqRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/contact", contactRoutes);
+
 // -------------------- CONTACT INFO API --------------------
 app.get("/api/contact", (req, res) => {
   res.json([
@@ -104,8 +106,6 @@ app.use((req, res) => {
   res.status(404).json({ message: `Route ${req.method} ${req.url} not found` });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🌐 Health check: http://localhost:${PORT}/api/health`);
-});
+// ❌ Remove app.listen()
+// ✅ Export app for Vercel
+export default app;
