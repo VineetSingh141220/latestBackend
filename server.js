@@ -63,6 +63,13 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+
+
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to BookHive API 🚀" });
+});
+
+
 // -------------------- ROUTES --------------------
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
